@@ -22,4 +22,8 @@ public class BookService {
             throw new RuntimeException("Book of Id " + id + " not found");
         }
     }
+
+    public List<Book> searchBooks(String searchValue) {
+        return bookRepository.findBooksBySearchValue(searchValue);
+    }
 }

@@ -29,4 +29,10 @@ public class BookController {
         model.addAttribute("book", book);
         return "book-details";
     }
+    @GetMapping("/search")
+    public String searchBooks(@RequestParam("searchValue") String searchValue, Model model){
+        List<Book> books = bookService.searchBooks(searchValue);
+        model.addAttribute("books", books);
+        return "/list-books";
+    }
 }

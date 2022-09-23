@@ -13,7 +13,14 @@
    class="btn btn-primary">Login</a>
 <a th:href="@{/main/register}"
    class="btn btn-primary">Register</a>
+<br>
   <div class="container">
+    <form action="#" th:action="@{/view-books/search}" method="get">
+      <p>Search books
+        <input type="text" name="searchValue"/>
+        <input type="submit" value="send" class="btn btn-info">
+      </p>
+    </form>
     <table class="table table-striped">
       <thead class="thead-dark">
       <tr>
