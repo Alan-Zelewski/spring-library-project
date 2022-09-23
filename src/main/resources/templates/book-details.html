@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+<h3 class="d-flex justify-content-center">Browse Available Books</h3>
+<a th:href="@{/main/login}"
+   class="btn btn-primary">Login</a>
+<a th:href="@{/main/register}"
+   class="btn btn-primary">Register</a>
+<div class="container" th:object="${book}">
+    <h5 th:text="${book.getTitle()}"></h5>
+    <hr>
+    <h6 th:text="${book.getAuthor()}"></h6>
+    <hr>
+    <p th:text="${book.getDescription()}"></p>
+    <hr>
+    <a th:href="@{/view-books/books}"
+       class="btn btn-info">
+        Back
+    </a>
+</div>
+</body>
+</html>

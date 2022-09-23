@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,5 +22,11 @@ public class BookController {
         List<Book> books = bookService.getAll();
         model.addAttribute("books", books);
         return "/list-books";
+    }
+    @GetMapping("/book-details")
+    public String getBookDetails(@RequestParam("bookId") Long id, Model model){
+        Book book = bookService.findById(id);
+        model.addAttribute("book", book);
+        return "book-details";
     }
 }

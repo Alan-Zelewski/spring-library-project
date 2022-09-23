@@ -15,4 +15,11 @@ public class BookService {
     public List<Book> getAll(){
         return bookRepository.findAll();
     }
+    public Book findById(Long id){
+        if(bookRepository.findById(id).isPresent()){
+            return bookRepository.findById(id).get();
+        }else {
+            throw new RuntimeException("Book of Id " + id + " not found");
+        }
+    }
 }

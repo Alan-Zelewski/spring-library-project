@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
-public class User {
+public class LibraryUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,4 +20,5 @@ public class User {
     private String email;
     private String login;
     private String password;
+    private String role;
 }

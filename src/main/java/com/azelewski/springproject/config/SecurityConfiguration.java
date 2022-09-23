@@ -17,7 +17,9 @@ public class SecurityConfiguration {
         http.authorizeRequests((auth) ->{
             try {
                 auth
-                        .antMatchers("/").permitAll();
+                        .antMatchers("/view-books").permitAll()
+                        .and()
+                        .formLogin().loginPage("/main/login").permitAll();
             }catch (Exception e){
                 throw new RuntimeException(e);
             }
