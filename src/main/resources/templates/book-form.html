@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h3>Book Management</h3>
+    <p class="h4 mb-4">Save Book</p>
+    <!--/*@thymesVar id="book" type="com.azelewski.springproject.model.Book"*/-->
+    <form action="#" th:action="@{/view-books/save}"
+          method="post">
+        <input type="hidden" th:field="${book.id}"/>
+        <input type="hidden" th:field="${book.bookAvailability.id}">
+        <input type="text" th:field="${book.title}"
+               class="form-control mb-4 col-4" placeholder="Title"/>
+        <input type="text" th:field="${book.author}"
+               class="form-control mb-4 col-4" placeholder="Author"/>
+        <input type="text" th:field="${book.description}"
+               class="form-control mb-4 col-4" placeholder="Description"/>
+        <input type="text" th:field="${book.isbn}"
+               class="form-control mb-4 col-4" placeholder="ISBN"/>
+        <input type="text" th:field="${book.bookAvailability.totalNumberOfBooks}"
+               class="form-control mb-4 col-4" placeholder="Total number of books"/>
+        <input type="text" th:field="${book.bookAvailability.booksBorrowed}"
+               class="form-control mb-4 col-4" placeholder="Number of borrowed books"/>
+        <input type="text" th:field="${book.bookAvailability.booksAvailable}"
+               class="form-control mb-4 col-4" placeholder="Number of available books"/>
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+    <hr>
+    <a th:href="@{/view-books/books}">Back to Book List</a>
+</div>
+
+</body>
+</html>

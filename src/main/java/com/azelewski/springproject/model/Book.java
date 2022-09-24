@@ -22,4 +22,9 @@ public class Book {
     @OneToOne(mappedBy = "book",cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private BookAvailability bookAvailability;
+
+    public void setBookAvailability(BookAvailability bookAvailability) {
+        this.bookAvailability = bookAvailability;
+        this.bookAvailability.setBook(this);
+    }
 }

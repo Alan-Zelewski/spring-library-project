@@ -26,4 +26,11 @@ public class BookService {
     public List<Book> searchBooks(String searchValue) {
         return bookRepository.findBooksBySearchValue(searchValue);
     }
+
+    public void save(Book book){
+        bookRepository.save(book);
+    }
+    public void deleteById(Long id){
+        bookRepository.deleteById(id);
+    }
 }
