@@ -18,7 +18,7 @@
 <br>
   <div class="container">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-7">
       <form action="#" th:action="@{/view-books/search}" method="get">
         <p>Search books
           <input type="text" name="searchValue"/>
@@ -26,12 +26,24 @@
         </p>
       </form>
       </div>
-      <div class="col-md-3" sec:authorize="hasAuthority('ADMIN')">
+      <div class="col-md-5" sec:authorize="hasAuthority('USER')">
         <a th:href="@{/view-books/add-book}"
-           class="btn btn-danger d-flex float-end">
+           class="btn btn-danger d-flex float-end"
+        sec:authorize="hasAuthority('ADMIN')">
           Add Book
         </a>
+        <a th:href="@{/user/view-users}" style="margin-right: 25px"
+           class="btn btn-danger d-flex float-end"
+        sec:authorize="hasAuthority('ADMIN')">
+          Administrate Users
+        </a>
+        <a th:href="@{/user/account}" style="margin-right: 25px"
+           class="btn btn-danger d-flex float-end">
+          My Account
+        </a>
+
       </div>
+
     </div>
     <table class="table table-striped">
       <thead class="thead-dark">

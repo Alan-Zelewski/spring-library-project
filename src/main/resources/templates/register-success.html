@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<title>Registration successful</title>
+<div>
+    <div id="loginbox" style="margin-top: 50px"
+         class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">User registered successfully!</div>
+            </div>
+            <div style="padding-top: 30px" class="panel-body">
+                <a th:href="@{/main/login}"
+                   class="btn btn-info">
+                    Login with new user
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>

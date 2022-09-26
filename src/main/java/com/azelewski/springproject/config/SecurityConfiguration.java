@@ -34,6 +34,7 @@ public class SecurityConfiguration {
                 auth
                         .antMatchers("/view-books/books").permitAll()
                         .antMatchers("/view-books/book-details").permitAll()
+                        .antMatchers("/view-books/search").permitAll()
                         .antMatchers("/view-books/**").hasAuthority("ADMIN")
                         .and()
                         .formLogin()
@@ -43,7 +44,7 @@ public class SecurityConfiguration {
                         .loginProcessingUrl("/main/authenticateUser")
                         .defaultSuccessUrl("/")
                         .and()
-                        .logout()
+                        .logout().logoutSuccessUrl("/main/login")
                         .and()
                         .exceptionHandling().accessDeniedPage("/access-denied");
             }catch (Exception e){

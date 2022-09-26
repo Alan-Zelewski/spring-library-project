@@ -6,8 +6,8 @@ insert into `Book` (`title`, `author`, `isbn`, `description`) values ('strangebo
 insert into `book_availability` (`book_id`,`total_number_of_books`,`books_borrowed`,`books_available`) values (3,10,2,8);
 INSERT INTO `user_role` (`role`) VALUES ('USER');
 INSERT INTO `user_role` (`role`) VALUES ('ADMIN');
-INSERT INTO `users` (`username`, `password`) VALUES ('tester', '$2a$10$HTTwWcEvb.aE8YXr7PUkGurs7Aleed2mzmMXTBhDvuctlY9oImq0C');
-INSERT INTO `users` (`username`, `password`) VALUES ('user', '$2a$10$HTTwWcEvb.aE8YXr7PUkGurs7Aleed2mzmMXTBhDvuctlY9oImq0C');
+INSERT INTO `users` (`username`, `password`,`first_name`, `last_name`, `email`) VALUES ('tester', '$2a$10$HTTwWcEvb.aE8YXr7PUkGurs7Aleed2mzmMXTBhDvuctlY9oImq0C','Tester','Tester','tester@tester.com');
+INSERT INTO `users` (`username`, `password`,`first_name`, `last_name`, `email`) VALUES ('user', '$2a$10$HTTwWcEvb.aE8YXr7PUkGurs7Aleed2mzmMXTBhDvuctlY9oImq0C','User','User','user@tester.com');
 INSERT INTO `user_user_role` VALUES (2, 1);
 INSERT INTO `user_user_role` VALUES (1, 1);
 INSERT INTO `user_user_role` VALUES (1, 2);

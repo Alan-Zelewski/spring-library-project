@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List of registered users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+<h3 class="d-flex justify-content-center">View Registered Users</h3>
+<form action="#" th:action="@{/logout}"
+      method="POST">
+    <input type="submit" value="Logout" class="btn btn-primary" />
+</form>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <form action="#" th:action="@{/main/search}" method="get">
+                <p>Search books
+                    <input type="text" name="searchValue"/>
+                    <input type="submit" value="Send" class="btn btn-info">
+                </p>
+            </form>
+        </div>
+        <div class="col-md-5" sec:authorize="hasAuthority('ADMIN')">
+            <a th:href="@{/view-books/add-book}"
+               class="btn btn-danger d-flex float-end">
+                Add Book
+            </a>
+            <a th:href="@{/view-books/books}" style="margin-right: 25px"
+               class="btn btn-danger d-flex float-end">
+                View Books
+            </a>
+            <a th:href="@{/main/account}" style="margin-right: 25px"
+               class="btn btn-danger d-flex float-end">
+                My Account
+            </a>
+        </div>
+
+    </div>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Username</th>
+            <th>Email address</th>
+            <th>Name</th>
+            <th class="d-flex float-end">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getUsername()}"/>
+            <td th:text="${user.getEmail()}"/>
+            <td th:text="${user.getFirstName()}"/>
+            <td th:text="${user.getLastName()}"/>
+            <td>
+                <a th:href="@{/main/update-user(userID=${user.id})}"
+                   class="btn btn-warning d-flex float-end">
+                    Edit
+                </a>
+                <a th:href="@{/main/book-details(userID=${user.id})}"
+                   class="btn btn-secondary d-flex float-end">
+                    Details
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

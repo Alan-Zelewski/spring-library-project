@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,9 +10,11 @@
 
 <h3 class="d-flex justify-content-center">Browse Available Books</h3>
 <a th:href="@{/main/login}"
-   class="btn btn-primary">Login</a>
-<a th:href="@{/main/register}"
-   class="btn btn-primary">Register</a>
+   class="btn btn-primary" sec:authorize="isAnonymous()">Login</a>
+<form action="#" th:action="@{/logout}"
+      method="POST" sec:authorize="isAuthenticated()">
+    <input type="submit" value="Logout" class="btn btn-primary" />
+</form>
 <div class="container" th:object="${book}">
     <h5 th:text="${book.getTitle()}"></h5>
     <hr>
