@@ -8,9 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -26,11 +24,12 @@ public class User implements UserDetails {
     private Long id;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     @Column(unique = true)
     private String username;
     private String password;
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH})
     @JoinTable(name = "user_user_role",
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "user_role_id"))
@@ -63,4 +62,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

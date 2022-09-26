@@ -33,6 +33,8 @@ public class SecurityConfiguration {
             try {
                 auth
                         .antMatchers("/view-books/books").permitAll()
+                        .antMatchers("/view-books/book-details").permitAll()
+                        .antMatchers("/view-books/**").hasAuthority("ADMIN")
                         .and()
                         .formLogin()
                         .loginPage("/main/login")
