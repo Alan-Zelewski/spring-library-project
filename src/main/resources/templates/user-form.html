@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Book</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h3>User Management</h3>
+  <p class="h4 mb-4">Save User</p>
+  <form action="#" th:action="@{/user/save}"
+        method="post">
+    <input type="hidden" th:field="${user.id}"/>
+    <input type="text" th:field="${user.firstName}"
+           class="form-control mb-4 col-4" placeholder="First name"/>
+    <input type="text" th:field="${user.lastName}"
+           class="form-control mb-4 col-4" placeholder="Last name"/>
+    <input type="text" th:field="${user.email}"
+           class="form-control mb-4 col-4" placeholder="Email address"/>
+    <input type="text" th:field="${user.username}"
+           class="form-control mb-4 col-4" placeholder="Username"/>
+    <button type="submit" class="btn btn-info col-2">Save</button>
+  </form>
+  <hr>
+  <a th:href="@{/user/view-users}">Back to user list</a>
+</div>
+
+</body>
+</html>

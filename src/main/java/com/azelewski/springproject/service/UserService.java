@@ -31,6 +31,9 @@ public class UserService implements UserDetailsService{
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 
     public boolean checkIfUserAlreadyExist(UserDTO userDTO) {
         if (emailExists(userDTO.getEmail())) {
@@ -58,5 +61,18 @@ public class UserService implements UserDetailsService{
     }
     public boolean usernameExists(String username){
         return userRepository.findByUsername(username).isPresent();
+    }
+
+    public User findById(Long id) {
+        if(userRepository.findById(id).isPresent()){
+            return userRepository.findById(id).get();
+        }else{
+            throw new RuntimeException("User of Id " + id + " not found");
+        }
+    }
+
+
+    public List<User> searchUsers(String searchValue) {
+        return userRepository.findUsersBySearchValue(searchValue);
     }
 }

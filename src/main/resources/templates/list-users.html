@@ -17,8 +17,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-7">
-            <form action="#" th:action="@{/main/search}" method="get">
-                <p>Search books
+            <form action="#" th:action="@{/user/search}" method="get">
+                <p>Search users
                     <input type="text" name="searchValue"/>
                     <input type="submit" value="Send" class="btn btn-info">
                 </p>
@@ -45,7 +45,8 @@
         <tr>
             <th>Username</th>
             <th>Email address</th>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th class="d-flex float-end">Actions</th>
         </tr>
         </thead>
@@ -56,11 +57,11 @@
             <td th:text="${user.getFirstName()}"/>
             <td th:text="${user.getLastName()}"/>
             <td>
-                <a th:href="@{/main/update-user(userID=${user.id})}"
+                <a th:href="@{/user/update-user(userId=${user.id})}"
                    class="btn btn-warning d-flex float-end">
                     Edit
                 </a>
-                <a th:href="@{/main/book-details(userID=${user.id})}"
+                <a th:href="@{/user/user-details(userId=${user.id})}"
                    class="btn btn-secondary d-flex float-end">
                     Details
                 </a>
